@@ -40,13 +40,31 @@ public class Polynomial<T> {
             return new Polynomial(0, new double[0]);
         }
         // TODO
-        return null;
+        double[] derivativeCoefficients= new double[power];
+        for(int i=1; i<= power; i++) {
+            derivativeCoefficients[i- 1]= coefficients[i]* i;
+        }
+        return new Polynomial(power- 1, derivativeCoefficients);
+      //  return null;
     }
 
     // 3. Evaluate the polynomial at the given point x
     public double evaluatePolynomial(double x){
         // TODO
-        return Double.MAX_VALUE;
+    	 double result= 0;
+    	    double exponent= 1; // x^i
+
+    	    for(int i= 0;i <= power; i++) {
+    	        result+= coefficients[i]* exponent; // x^i
+    	        exponent*= x; 
+    	    }
+//
+//    	    if (result == 0) {
+//    	        return result;
+//    	    }else {
+//    	        return result;
+//    	    }
+    	    return result;
     }
 
     public boolean equals(Polynomial p) {
